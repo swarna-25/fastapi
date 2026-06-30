@@ -9,8 +9,9 @@ from .config import settings
 
 #format-'postgressql://<username>:<password>@<ip-address/hostname>:<port>/<databse_name>'
 # SQLALCHEMY_DATABASE_URL='postgresql://jinendra.soni:Jine1921@127.0.0.1:5432/fastapi'   
-SQLALCHEMY_DATABASE_URL= f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
 
+#SQLALCHEMY_DATABASE_URL= f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
+SQLALCHEMY_DATABASE_URL = settings.database_url # doing this instead of above due to neon db connection
 
 engine=create_engine(SQLALCHEMY_DATABASE_URL)
 
