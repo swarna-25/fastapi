@@ -19,8 +19,9 @@ jobs:
     
     services:
       postgres:
-        image: postgres
+        image: postgres:16
         env:
+          POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
           POSTGRES_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
           POSTGRES_DB: ${{secrets.DATABASE_NAME}}_test
         ports:

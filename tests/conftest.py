@@ -13,8 +13,12 @@ from app.oauth2 import create_access_token
 
 
 #SQLALCHEMY_DATABASE_URL= f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
-# SQLALCHEMY_DATABASE_URL = settings.database_url # doing this instead of above due to neon db connection
-SQLALCHEMY_DATABASE_URL = 'postgresql://jinendra.soni:Jine1921@127.0.0.1:5432/fastapi_test'
+SQLALCHEMY_DATABASE_URL = settings.database_url # doing this instead of above due to neon db connection
+# SQLALCHEMY_DATABASE_URL = 'postgresql://jinendra.soni:Jine1921@127.0.0.1:5432/fastapi_test'
+# SQLALCHEMY_DATABASE_URL = settings.database_url.replace(
+#     settings.database_name,
+#     f"{settings.database_name}_test"
+# )
 
 engine=create_engine(SQLALCHEMY_DATABASE_URL)
 
