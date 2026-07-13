@@ -43,7 +43,7 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root():
-    return {"message": "Hello World pushed to prod via CI/CD pipeline"}
+    return {"message": "Hello World"}
 
 # @app.get("/sqlalchemy")
 # def test_posts(db: Session=Depends(get_db)):
