@@ -1,0 +1,27 @@
+version: "3"
+services:
+    api:
+        image: cloudmindai/fastapi
+        depends_on:
+          - postgres
+        ports:
+            - 80:8000
+        # command: uvicorn app.main:app --host 0.0.0.0 --port 8000 
+        # env_file:
+        #     - ./.env #refer to environment variables present in our currect directory.Either use this or below with actual name of all variables.
+        environment:
+          - DATABASE_URL=${DATABASE_URL}
+          - SECRET_KEY=${SECRET_KEY}
+          - ALGORITHM=${ALGORITHM}
+          - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+    postgres:
+      image: postgres:16  #creating db with already created image file
+      environment: #need to set some variables
+          - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+          - POSTGRES_DB=${DATABASE_NAME}
+
+      volumes: #this is used to store all our data at the given location if our container goes down
+          - postgres-db:/var/lib/postgresql/data
+
+volumes:
+    postgres-db:
